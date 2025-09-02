@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+}
+@model List<Product>
+
+<h2>Buscar Produtos</h2>
+
+<form asp-action="Search" method="get" class="form-inline mb-3">
+    <input type="text" name="id" class="form-control mr-2" placeholder="Digite o ID do produto" />
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+@if (!Model.Any())
+{
+    <p>Nenhum produto encontrado.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.IdProduct</td>
+                    <td>@p.Name</td>
+                    <td>@p.Price</td>
+                    <td>@p.Stock</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
